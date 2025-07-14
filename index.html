@@ -1,174 +1,182 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A/B-Test Plan - Swag Checkout Optimisation</title>
+  <title>A/B-Test Plan · Swag Checkout Optimisation</title>
 
-  <!-- Tailwind (same CDN & Inter font as MVP) -->
+  <!-- Tailwind (v3 CDN for demo) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional: Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Inter', sans-serif; }
-    :root { --cu-purple:#7B68EE; }
   </style>
 </head>
-<body class="min-h-screen bg-gray-50 flex flex-col items-center px-4 py-8">
 
-  <!-- Header -->
-  <header class="w-full max-w-5xl mb-8 text-center">
-    <h1 class="text-3xl font-extrabold text-gray-800 mb-2">A/B-Test Plan: Scaling Optimisation After MVP Ship</h1>
-    <p class="text-gray-600 max-w-2xl mx-auto">
-      Strategic objective&nbsp;— compound the conversion lift unlocked by the T-Shirt Checkout MVP with
-      fast, in-production UX &amp; copy experiments.
+<body class="bg-slate-50 text-gray-800 antialiased leading-relaxed">
+
+  <main class="max-w-5xl mx-auto px-4 pb-24 pt-16">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-center">
+      A/B-Test Plan: Scaling Optimisation After MVP Ship
+    </h1>
+    <p class="mt-1 text-sm text-gray-500 text-center max-w-xl mx-auto">
+      Strategic objective — compound the conversion lift unlocked by the T-Shirt Checkout
+      MVP with fast, in-production UX &amp; copy experiments.
     </p>
-  </header>
 
-  <!-- Main Table -->
-  <main class="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden">
-    <div class="overflow-x-auto">
-      <table class="min-w-full text-sm text-left">
-        <thead class="bg-[color:var(--cu-purple)] text-white">
-          <tr>
-            <th class="py-3 px-4 font-semibold">Test ID</th>
-            <th class="py-3 px-4 font-semibold">Test Name</th>
-            <th class="py-3 px-4 font-semibold">Variant A</th>
-            <th class="py-3 px-4 font-semibold">Variant B</th>
-            <th class="py-3 px-4 font-semibold">Primary Metric</th>
-            <th class="py-3 px-4 font-semibold">Owner</th>
-            <th class="py-3 px-4 font-semibold">Notes / Hunch</th>
+    <!-- Test plan table -->
+    <div class="mt-12 overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-purple-600 text-white">
+          <tr class="whitespace-nowrap">
+            <th class="py-3 px-3 text-left">Test ID</th>
+            <th class="py-3 px-3 text-left">Test Name</th>
+            <th class="py-3 px-3 text-left">Variant A</th>
+            <th class="py-3 px-3 text-left">Variant B</th>
+            <th class="py-3 px-3 text-left">Primary Metric</th>
+            <th class="py-3 px-3 text-left">Owner</th>
+            <th class="py-3 px-3 text-left">Notes / Hunch</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
-          <tr class="hover:bg-purple-50/40">
-            <td class="py-3 px-4 whitespace-nowrap font-medium">AB-001</td>
-            <td class="py-3 px-4">Order-Summary<br/>Placement</td>
-            <td class="py-3 px-4">Sidebar sticky</td>
-            <td class="py-3 px-4">Inline collapsible panel</td>
-            <td class="py-3 px-4">Checkout&nbsp;Conversion&nbsp;%</td>
-            <td class="py-3 px-4">PM-Billing</td>
-            <td class="py-3 px-4">Isolate layout only</td>
+        <tbody class="bg-white divide-y divide-gray-200">
+
+          <tr>
+            <td class="py-3 px-3 font-medium">AB-001</td>
+            <td class="py-3 px-3">Order-Summary Placement</td>
+            <td class="py-3 px-3">Sidebar sticky</td>
+            <td class="py-3 px-3">Inline collapsible panel</td>
+            <td class="py-3 px-3">Checkout Conversion %</td>
+            <td class="py-3 px-3">PM-Billing</td>
+            <td class="py-3 px-3">Isolate layout only</td>
           </tr>
-          <tr class="hover:bg-purple-50/40">
-            <td class="py-3 px-4 font-medium">AB-002</td>
-            <td class="py-3 px-4">CTA Hierarchy<br/>(Checkout Options)</td>
-            <td class="py-3 px-4">“Continue as Guest” primary</td>
-            <td class="py-3 px-4">Guest secondary</td>
-            <td class="py-3 px-4">Checkout&nbsp;Conversion&nbsp;%</td>
-            <td class="py-3 px-4">PM-Billing</td>
-            <td class="py-3 px-4">Same copy &amp; styling otherwise</td>
+
+          <tr>
+            <td class="py-3 px-3 font-medium">AB-002</td>
+            <td class="py-3 px-3">CTA Hierarchy (Checkout Options)</td>
+            <td class="py-3 px-3">“Continue as Guest” primary</td>
+            <td class="py-3 px-3">Guest secondary</td>
+            <td class="py-3 px-3">Checkout Conversion %</td>
+            <td class="py-3 px-3">PM-Billing</td>
+            <td class="py-3 px-3">Same copy &amp; styling otherwise</td>
           </tr>
-          <tr class="hover:bg-purple-50/40">
-            <td class="py-3 px-4 font-medium">AB-003</td>
-            <td class="py-3 px-4">Trust-Badge<br/>Treatment</td>
-            <td class="py-3 px-4">Card badges visible</td>
-            <td class="py-3 px-4">No badges</td>
-            <td class="py-3 px-4">Payment&nbsp;Abandon %</td>
-            <td class="py-3 px-4">Design Lead</td>
-            <td class="py-3 px-4">Hold copy constant</td>
+
+          <tr>
+            <td class="py-3 px-3 font-medium">AB-003</td>
+            <td class="py-3 px-3">Trust-Badge Treatment</td>
+            <td class="py-3 px-3">Card badges visible</td>
+            <td class="py-3 px-3">No badges</td>
+            <td class="py-3 px-3">Payment Abandon %</td>
+            <td class="py-3 px-3">Design Lead</td>
+            <td class="py-3 px-3">Hold copy constant</td>
+          </tr>
+
+          <!---- Clickable row for demo ---->
           <tr id="ab004-row" class="hover:bg-purple-50 cursor-pointer">
-          <tr class="hover:bg-purple-50/40">
-            <td class="py-3 px-4 font-medium">AB-004</td>
-            <td class="py-3 px-4">Error-Message<br/>Tone</td>
-            <td class="py-3 px-4">Concise technical copy</td>
-            <td class="py-3 px-4">Friendly / supportive copy</td>
-            <td class="py-3 px-4">Payment-Retry Success %</td>
-            <td class="py-3 px-4">CX / Content</td>
-            <td class="py-3 px-4">Same field-specific detail</td>
-            <td>AB-004</td>
+            <td class="py-3 px-3 font-medium">AB-004</td>
+            <td class="py-3 px-3">Error-Message Tone</td>
+            <td class="py-3 px-3">Concise technical copy</td>
+            <td class="py-3 px-3">Friendly / supportive copy</td>
+            <td class="py-3 px-3">Payment-Retry Success %</td>
+            <td class="py-3 px-3">CX / Content</td>
+            <td class="py-3 px-3">Same field-specific detail</td>
           </tr>
+
         </tbody>
       </table>
     </div>
 
-    <!-- Execution Block -->
-    <section class="p-6 lg:p-8 bg-gray-100">
-      <h2 class="text-xl font-semibold mb-4 text-gray-800">Execution Framework</h2>
-      <ul class="space-y-1 text-gray-700 list-disc list-inside">
-        <li><strong>Framework & tooling:</strong> Optimizely (or internal ClickUp variant service) wired to billing front-end.</li>
+    <!-- Execution framework block -->
+    <section class="mt-12 bg-gray-100 rounded-2xl p-6">
+      <h2 class="text-lg font-semibold mb-3">Execution Framework</h2>
+      <ul class="list-disc list-inside space-y-1 text-sm">
+        <li><strong>Framework &amp; tooling:</strong> Optimizely (or internal ClickUp variant service) wired to billing front-end.</li>
         <li><strong>Segmentation:</strong> 50 / 50 randomised; power-users tagged separately for secondary cut.</li>
-        <li><strong>Stat confidence:</strong> 95 % two-tailed; minimum detectable effect ≥ 4 pp.</li>
-        <li><strong>Sample size:</strong> ≈ 4 k completed sessions per variant (≈ 5-7 days at current swag-checkout traffic).</li>
+        <li><strong>Stat confidence:</strong> 95 % two-tailed; minimum detectable effect ≈ 4 pp.</li>
+        <li><strong>Sample size:</strong> ≈ 4 k completed sessions / variant (≈ 5–7 days at current swag-checkout traffic).</li>
         <li><strong>Run duration:</strong> 14-day cap or earlier on significance.</li>
       </ul>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="mt-8 text-gray-500 text-xs">
-    © 2025 ClickUp — Swag Checkout Optimisation Plan
-  </footer>
-<!-- ── AB-004 Demo Modal ──────────────────────────────────────────── -->
-<div id="ab004-modal"
-     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60">
-  <div class="bg-white w-full max-w-2xl mx-4 md:mx-0 rounded-2xl shadow-xl">
-    <header class="flex items-center justify-between px-6 py-4 border-b">
-      <h2 class="text-xl font-semibold text-gray-800">
-        AB-004 · Error-Message Tone — Demo Flow
-      </h2>
-      <button id="ab004-close"
-              class="text-2xl leading-none text-gray-500 hover:text-gray-800">
-        &times;
-      </button>
-    </header>
+  <!-- ───────── Modal for AB-004 Demo Flow ───────── -->
+  <div id="ab004-modal"
+       class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60">
+    <div class="bg-white w-full max-w-2xl mx-4 md:mx-0 rounded-2xl shadow-xl">
+      <header class="flex items-center justify-between px-6 py-4 border-b">
+        <h2 class="text-xl font-semibold text-gray-800">
+          AB-004 · Error-Message Tone — Demo Flow
+        </h2>
+        <button id="ab004-close"
+                class="text-2xl leading-none text-gray-500 hover:text-gray-800">
+          &times;
+        </button>
+      </header>
 
-    <div class="px-6 py-5 space-y-4 max-h-[72vh] overflow-y-auto">
-      <!-- Step blocks -->
-      <div class="border-l-4 border-purple-600 pl-4">
-        <h3 class="font-semibold">Step 1 · Field blur error</h3>
-        <p class="text-sm text-gray-600">
-          <strong>Variant A</strong>: “Please enter a valid 16-digit&nbsp;card number.”<br>
-          <strong>Variant B</strong>: “Hmm, that card # looks short—try all 16 digits&nbsp;😊”
-        </p>
-      </div>
+      <div class="px-6 py-5 space-y-4 max-h-[72vh] overflow-y-auto">
 
-      <div class="border-l-4 border-purple-600 pl-4">
-        <h3 class="font-semibold">Step 2 · First failed submit</h3>
-        <p class="text-sm text-gray-600">
-          <strong>A</strong>: Toast — “Please correct the errors to proceed with payment.”<br>
-          <strong>B</strong>: Toast — “We can’t finish the payment just yet—let’s fix the fields in red and you’ll be good to go!”
-        </p>
-      </div>
+        <div class="border-l-4 border-purple-600 pl-4">
+          <h3 class="font-semibold">Step 1 · Field-blur error</h3>
+          <p class="text-sm text-gray-600">
+            <strong>Variant A</strong>: “Please enter a valid 16-digit card number.”<br>
+            <strong>Variant B</strong>: “Hmm, that card # looks short—try all 16 digits 😊”
+          </p>
+        </div>
 
-      <div class="border-l-4 border-purple-600 pl-4">
-        <h3 class="font-semibold">Step 3 · Second failed submit</h3>
-        <p class="text-sm text-gray-600">
-          <strong>B</strong> escalates copy → “Need a hand? Double-check card date &amp; CVC.”
-        </p>
-      </div>
+        <div class="border-l-4 border-purple-600 pl-4">
+          <h3 class="font-semibold">Step 2 · First failed submit</h3>
+          <p class="text-sm text-gray-600">
+            <strong>A</strong>: Toast — “Please correct the errors to proceed with payment.”<br>
+            <strong>B</strong>: Toast — “We can’t finish the payment just yet—let’s fix the fields in red and you’ll be good to go!”
+          </p>
+        </div>
 
-      <div class="border-l-4 border-purple-600 pl-4">
-        <h3 class="font-semibold">Step 4 · Third failed submit</h3>
-        <p class="text-sm text-gray-600">
-          <strong>B</strong> shows CTA “Chat with support” (opens mock support modal).
-        </p>
-      </div>
+        <div class="border-l-4 border-purple-600 pl-4">
+          <h3 class="font-semibold">Step 3 · Second failed submit</h3>
+          <p class="text-sm text-gray-600">
+            <strong>B</strong> escalates copy → “Need a hand? Double-check card date &amp; CVC.”
+          </p>
+        </div>
 
-      <div class="border-l-4 border-purple-600 pl-4">
-        <h3 class="font-semibold">Step 5 · Successful retry</h3>
-        <p class="text-sm text-gray-600">
-          <strong>B</strong> adds 1-sec celebration micro-copy — “Nice! Details look perfect—next stop, review 🚀”
-        </p>
+        <div class="border-l-4 border-purple-600 pl-4">
+          <h3 class="font-semibold">Step 4 · Third failed submit</h3>
+          <p class="text-sm text-gray-600">
+            <strong>B</strong> shows CTA “Chat with support” (opens mock support modal).
+          </p>
+        </div>
+
+        <div class="border-l-4 border-purple-600 pl-4">
+          <h3 class="font-semibold">Step 5 · Successful retry</h3>
+          <p class="text-sm text-gray-600">
+            <strong>B</strong> adds micro-celebration — “Nice! Details look perfect—next stop, review 🚀”
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-<!-- ───────────────────────────────────────────────────────────────── -->
-<script>
-  // ── AB-004 modal wiring ───────────────────────────────────
-  const row   = document.getElementById('ab004-row');
-  const modal = document.getElementById('ab004-modal');
-  const close = document.getElementById('ab004-close');
+  <!-- ────────────────────────────────────────────── -->
 
-  if (row && modal && close) {
-    row.addEventListener('click', () => modal.classList.remove('hidden'));
-    close.addEventListener('click', () => modal.classList.add('hidden'));
-    // optional: escape key
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') modal.classList.add('hidden');
-    });
-  }
-</script>
+  <!-- Script to wire up modal -->
+  <script>
+    const row   = document.getElementById('ab004-row');
+    const modal = document.getElementById('ab004-modal');
+    const close = document.getElementById('ab004-close');
 
+    if (row && modal && close) {
+      row.addEventListener('click', () => modal.classList.remove('hidden'));
+      close.addEventListener('click', () => modal.classList.add('hidden'));
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+      });
+    }
+  </script>
+
+  <footer class="text-center text-xs text-gray-400 py-6">
+    © 2025 ClickUp — Swag Checkout Optimisation Plan
+  </footer>
 </body>
 </html>
+```
