@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A/B-Test Plan – Swag Checkout Optimisation</title>
+  <title>A/B-Test Plan - Swag Checkout Optimisation</title>
 
   <!-- Tailwind (same CDN & Inter font as MVP) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -75,6 +75,8 @@
             <td class="py-3 px-4">Payment-Retry Success %</td>
             <td class="py-3 px-4">CX / Content</td>
             <td class="py-3 px-4">Same field-specific detail</td>
+            <tr id="ab004-row" class="hover:bg-purple-50 cursor-pointer">
+            <td>AB-004</td>
           </tr>
         </tbody>
       </table>
@@ -153,6 +155,21 @@
   </div>
 </div>
 <!-- ───────────────────────────────────────────────────────────────── -->
+<script>
+  // ── AB-004 modal wiring ───────────────────────────────────
+  const row   = document.getElementById('ab004-row');
+  const modal = document.getElementById('ab004-modal');
+  const close = document.getElementById('ab004-close');
+
+  if (row && modal && close) {
+    row.addEventListener('click', () => modal.classList.remove('hidden'));
+    close.addEventListener('click', () => modal.classList.add('hidden'));
+    // optional: escape key
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+  }
+</script>
 
 </body>
 </html>
