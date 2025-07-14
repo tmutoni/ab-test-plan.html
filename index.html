@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,11 +172,75 @@
         if (e.key === 'Escape') modal.classList.add('hidden');
       });
     }
+    // ---------- AB-004 demo flow ----------
+const demoHook      = document.getElementById('ab004-flow-hook');
+const demoModal     = document.getElementById('ab004-demo-modal');
+const demoContainer = document.getElementById('demo-step-container');
+const demoPrev      = document.getElementById('demo-prev');
+const demoNext      = document.getElementById('demo-next');
+const demoClose     = document.getElementById('demo-close');
+
+const demoSteps = [
+  { title:'Step 1 · Field-blur error', A:'Toast — “Please enter a valid 16-digit card number.”',
+    B:'Toast — “Hmm, that card # looks short—try all 16 digits 😊”' },
+  { title:'Step 2 · First failed submit', A:'Toast — “Please correct the errors to proceed with payment.”',
+    B:'Toast — “We can’t finish the payment just yet—let’s fix the fields in red and you’ll be good to go!”' },
+  { title:'Step 3 · Second failed submit', B:'Escalates copy → “Need a hand? Double-check card date & CVC.”' },
+  { title:'Step 4 · Third failed submit',  B:'Shows CTA “Chat with support” (opens mock support modal).' },
+  { title:'Step 5 · Successful retry',     B:'Celebration copy — “Nice! Details look perfect—next stop, review 🚀”' }
+];
+
+let demoIdx = 0;
+const renderDemo = () => {
+  const s = demoSteps[demoIdx];
+  demoContainer.innerHTML = `
+    <h3 class="text-lg font-semibold mb-4">${s.title}</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      ${s.A ? `<div class="p-4 rounded-xl shadow-md border"><h4 class="font-semibold text-purple-700 mb-2">Variant A</h4><p>${s.A}</p></div>` : ''}
+      <div class="p-4 rounded-xl shadow-md border ${s.A ? '' : 'md:col-span-2'}">
+        <h4 class="font-semibold text-purple-700 mb-2">Variant B</h4><p>${s.B}</p>
+      </div>
+    </div>`;
+  demoPrev.disabled = demoIdx === 0;
+  demoNext.textContent = demoIdx === demoSteps.length-1 ? 'Close' : 'Next';
+};
+
+const openDemo = () => { demoIdx = 0; renderDemo(); demoModal.classList.remove('hidden'); };
+const closeDemo = () =>  demoModal.classList.add('hidden');
+
+demoHook?.addEventListener('click', e => { e.preventDefault(); openDemo(); });
+demoPrev .addEventListener('click', () => { if(demoIdx>0){demoIdx--; renderDemo(); }});
+demoNext .addEventListener('click', () => { if(demoIdx<demoSteps.length-1){demoIdx++; renderDemo();} else {closeDemo();}});
+demoClose.addEventListener('click', closeDemo);
+document.addEventListener('keydown', e => {
+  if (demoModal.classList.contains('hidden')) return;
+  if (e.key==='Escape') closeDemo();
+  if (e.key==='ArrowRight') demoNext.click();
+  if (e.key==='ArrowLeft')  demoPrev.click();
+});
+// ---------- /AB-004 demo flow ----------
   </script>
 
   <footer class="text-center text-xs text-gray-400 py-6">
     © 2025 ClickUp — Swag Checkout Optimisation Plan
   </footer>
 </body>
+  <!-- hook -->
+<a id="ab004-flow-hook" href="#" class="text-purple-600 underline">See example flow</a>
+
+<!-- big modal (hidden by default) -->
+<div id="ab004-demo-modal" class="fixed inset-0 bg-gray-800/40 backdrop-blur-sm flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-2xl w-full max-w-4xl p-6 relative">
+    <button id="demo-close" class="absolute right-4 top-4 text-gray-400 text-2xl font-bold">&times;</button>
+    <h2 class="text-xl font-semibold mb-6">AB-004 • Error-Message Tone — Demo Flow</h2>
+
+    <div id="demo-step-container"></div>
+
+    <div class="flex justify-between mt-8 gap-4">
+      <button id="demo-prev" class="secondary-btn flex-1">Prev</button>
+      <button id="demo-next" class="primary-btn flex-1">Next</button>
+    </div>
+  </div>
+</div>
+
 </html>
-```
