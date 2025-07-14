@@ -97,6 +97,62 @@
   <footer class="mt-8 text-gray-500 text-xs">
     © 2025 ClickUp — Swag Checkout Optimisation Plan
   </footer>
+<!-- ── AB-004 Demo Modal ──────────────────────────────────────────── -->
+<div id="ab004-modal"
+     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60">
+  <div class="bg-white w-full max-w-2xl mx-4 md:mx-0 rounded-2xl shadow-xl">
+    <header class="flex items-center justify-between px-6 py-4 border-b">
+      <h2 class="text-xl font-semibold text-gray-800">
+        AB-004 · Error-Message Tone — Demo Flow
+      </h2>
+      <button id="ab004-close"
+              class="text-2xl leading-none text-gray-500 hover:text-gray-800">
+        &times;
+      </button>
+    </header>
+
+    <div class="px-6 py-5 space-y-4 max-h-[72vh] overflow-y-auto">
+      <!-- Step blocks -->
+      <div class="border-l-4 border-purple-600 pl-4">
+        <h3 class="font-semibold">Step 1 · Field blur error</h3>
+        <p class="text-sm text-gray-600">
+          <strong>Variant A</strong>: “Please enter a valid 16-digit&nbsp;card number.”<br>
+          <strong>Variant B</strong>: “Hmm, that card # looks short—try all 16 digits&nbsp;😊”
+        </p>
+      </div>
+
+      <div class="border-l-4 border-purple-600 pl-4">
+        <h3 class="font-semibold">Step 2 · First failed submit</h3>
+        <p class="text-sm text-gray-600">
+          <strong>A</strong>: Toast — “Please correct the errors to proceed with payment.”<br>
+          <strong>B</strong>: Toast — “We can’t finish the payment just yet—let’s fix the fields in red and you’ll be good to go!”
+        </p>
+      </div>
+
+      <div class="border-l-4 border-purple-600 pl-4">
+        <h3 class="font-semibold">Step 3 · Second failed submit</h3>
+        <p class="text-sm text-gray-600">
+          <strong>B</strong> escalates copy → “Need a hand? Double-check card date &amp; CVC.”
+        </p>
+      </div>
+
+      <div class="border-l-4 border-purple-600 pl-4">
+        <h3 class="font-semibold">Step 4 · Third failed submit</h3>
+        <p class="text-sm text-gray-600">
+          <strong>B</strong> shows CTA “Chat with support” (opens mock support modal).
+        </p>
+      </div>
+
+      <div class="border-l-4 border-purple-600 pl-4">
+        <h3 class="font-semibold">Step 5 · Successful retry</h3>
+        <p class="text-sm text-gray-600">
+          <strong>B</strong> adds 1-sec celebration micro-copy — “Nice! Details look perfect—next stop, review 🚀”
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ───────────────────────────────────────────────────────────────── -->
 
 </body>
 </html>
